@@ -2,7 +2,7 @@ variable "region" {
   type    = string
   default = "ap-northeast-2"
 }
-variable "vpc_id" {
+variable "prefix" {
   type    = string
-  default = "vpc-028d49c644e3f54e7"
+  default = "user00"
 }

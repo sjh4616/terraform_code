@@ -1,8 +1,8 @@
 // SSH 보안그룹
-resource "aws_security_group" "user00-ssh-accept" {
-  name        = "user00-ssh-accept"
+resource "aws_security_group" "ssh-accept" {
+  name        = "${var.prefix}-ssh-accept"
   description = "Security group to allow SSH access"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
 
   ingress {
     description = "SSH from anywhere"
@@ -19,15 +19,15 @@ resource "aws_security_group" "user00-ssh-accept" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "user00-ssh-accept"
+    Name = "${var.prefix}-ssh-accept"
   }
 }
 
 // HTTP 보안그룹
-resource "aws_security_group" "user00-http-accept" {
-  name        = "user00-http-accept"
+resource "aws_security_group" "http-accept" {
+  name        = "${var.prefix}-http-accept"
   description = "Security group to allow HTTP access"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
 
   ingress {
     description = "HTTP from anywhere"
@@ -44,15 +44,15 @@ resource "aws_security_group" "user00-http-accept" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "user00-http-accept"
+    Name = "${var.prefix}-http-accept"
   }
 }
 
 // HTTPS 보안그룹
-resource "aws_security_group" "user00-https-accept" {
-  name        = "user00-https-accept"
+resource "aws_security_group" "https-accept" {
+  name        = "${var.prefix}-https-accept"
   description = "Security group to allow HTTPS access"
-  vpc_id      = var.vpc_id
+  vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
 
   ingress {
     description = "HTTPS from anywhere"
@@ -69,6 +69,6 @@ resource "aws_security_group" "user00-https-accept" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags = {
-    Name = "user00-https-accept"
+    Name = "${var.prefix}-https-accept"
   }
 }

@@ -1,10 +1,15 @@
-variable "bucket_name" {
-  description = "The name of the S3 bucket"
+variable "region" {
+  description = "The AWS region to create resources in"
   type        = string
-  default = "user00-terraform-bucket"
+  default     = "ap-northeast-2"
 }
-variable "table_name" {
-  description = "The name of the DynamoDB table"
+variable "prefix" {
+  description = "The name of the prefix for resources"
   type        = string
-  default = "user00-terraform-locks"  
+  default     = "user00"
 }
+# variable "table_name" {
+#   description = "The name of the DynamoDB table"
+#   type        = string
+#   default = "user00-terraform-locks"  
+# }
